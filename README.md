@@ -28,7 +28,7 @@ This Arduino library provides an easy-to-use interface for controlling an LCD di
 
 1. Include the `ShiftLcd` library in your Arduino sketch:
 
-   ```cpp
+```cpp
   #include "ShiftLcd.h"
   int LCD_EN = 2;
   int LCD_D7 = 3; 
@@ -36,19 +36,19 @@ This Arduino library provides an easy-to-use interface for controlling an LCD di
   int SHIFT_SRCLK = 5;
 
   ShiftLcd lcd(LCD_EN, LCD_D7, SHIFT_SER, SHIFT_SRCLK);
-  ```
+```
 2. Initialize the LCD in the setup() function and write a message:
 
-  ```cpp
+```cpp
   void setup() {
     lcd.begin();
     lcd.write("Hello, World!");
   }
-  ```
+```
 3. Use the library functions to control the LCD in the loop() function:
 
-  ```cpp
+```cpp
   void loop() {
     lcd.scrollLeft();
   }
-  ```
+```
