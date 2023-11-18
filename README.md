@@ -19,6 +19,9 @@ This Arduino library provides an easy-to-use interface for controlling an HD4478
 1. Connect everything according to the picture:
 
 ![Connections](extras/Connections.png)
+The pull down resistor connected to the LCDs D7-pin should be about 10 kOhms.
+The 10 kOhms potentiometer connected to the LCDs V0-pin can be replaced by a ca 5 kOhms resistor.
+
 
 2. In the Arduino IDE: Sketch > Include Library > Manage Libraries.
 
