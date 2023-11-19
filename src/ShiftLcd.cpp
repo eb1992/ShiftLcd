@@ -1,6 +1,5 @@
 #include "Arduino.h"
 #include "ShiftLcd.h"
-#include "LcdConstants.h"
 
 
 //-- Public functions ------------------------------------------------------\\
@@ -27,13 +26,13 @@ void ShiftLcd::begin(){
   // Set initial conditions and configuration for the LCD
   updateTime();
   checkBusyFlag();
-  writeDisplay(LCD::FUNCTION_SET_8, LCD::WRITE_INSTR); // Set display to 8-pin mode
-  shiftData(LCD::FUNCTION_SET_INIT_4, LCD::WRITE_INSTR); // Set display to 4-pin mode
+  writeDisplay(FUNCTION_SET_8, WRITE_INSTR); // Set display to 8-pin mode
+  shiftData(FUNCTION_SET_INIT_4, WRITE_INSTR); // Set display to 4-pin mode
   togglePin(EN);
   checkBusyFlag();
-  writeDisplay(LCD::FUNCTION_SET_4, LCD::WRITE_INSTR);
+  writeDisplay(FUNCTION_SET_4, WRITE_INSTR);
   on();
-  writeDisplay(LCD::ENTRY_MODE_SET, LCD::WRITE_INSTR);
+  writeDisplay(ENTRY_MODE_SET, WRITE_INSTR);
   clear();
 }
 
@@ -45,7 +44,7 @@ void ShiftLcd::write(char msg[]){
 
 void ShiftLcd::write(char msg1[], char msg2[]){
   writeString(msg1);
-  writeDisplay(LCD::LINE_TWO, LCD::WRITE_INSTR);
+  writeDisplay(LINE_TWO, WRITE_INSTR);
   writeString(msg2);
 }
 
@@ -71,12 +70,12 @@ void ShiftLcd::write(int n){
 
 // Shift the display text one step to the left
 void ShiftLcd::shiftLeft(){
-  writeDisplay(LCD::LEFT_SHIFT, LCD::WRITE_INSTR);
+  writeDisplay(LEFT_SHIFT, WRITE_INSTR);
 }
 
 // Shift the display text one step to the right 
 void ShiftLcd::shiftRight(){
-  writeDisplay(LCD::RIGHT_SHIFT, LCD::WRITE_INSTR);
+  writeDisplay(RIGHT_SHIFT, WRITE_INSTR);
 }
 
 // Scrolls the display to the right with the provided delays speed
@@ -99,20 +98,20 @@ void ShiftLcd::blink(unsigned long delay){
 
 // Turn the displayed text on
 void ShiftLcd::on(){
-  writeDisplay(LCD::DISPLAY_ON, LCD::WRITE_INSTR); 
+  writeDisplay(DISPLAY_ON, WRITE_INSTR); 
   isOn = true;
 }
 
 // Turn the displayed text off 
 void ShiftLcd::off(){
-  writeDisplay(LCD::DISPLAY_OFF, LCD::WRITE_INSTR); 
+  writeDisplay(DISPLAY_OFF, WRITE_INSTR); 
   isOn = false; 
 }
 
 // Clears the text from the display
 void ShiftLcd::clear(){
-  writeDisplay(LCD::CLEAR_DISPLAY, LCD::WRITE_INSTR);
-  for(uint8_t i = 0; i < LCD::N_BUSY_FLAG_TICKS; i++){
+  writeDisplay(CLEAR_DISPLAY, WRITE_INSTR);
+  for(uint8_t i = 0; i < N_BUSY_FLAG_TICKS; i++){
     checkBusyFlag();
   }
 }
@@ -123,14 +122,14 @@ void ShiftLcd::clear(){
 // Write a character at a time to the display
 void ShiftLcd::writeString(const char* msg){
   for(uint8_t i = 0; i < strlen(msg); i++){
-    writeDisplay(msg[i], LCD::WRITE_CHAR);
+    writeDisplay(msg[i], WRITE_CHAR);
   }
-  writeDisplay(LCD::LINE_ONE, LCD::WRITE_INSTR);
+  writeDisplay(LINE_ONE, WRITE_INSTR);
 }
 
 void ShiftLcd::writeString(const char* msg1, const char* msg2){
   writeString(msg1);
-  writeDisplay(LCD::LINE_TWO, LCD::WRITE_INSTR);
+  writeDisplay(LINE_TWO, WRITE_INSTR);
   writeString(msg2);
 }
 
@@ -157,7 +156,7 @@ void ShiftLcd::togglePin(uint8_t pin){
 
 // Checks if the display is ready for a new instruction
 void ShiftLcd::checkBusyFlag(){
-  shiftData(LCD::READ_BUSY_FLAG, LCD::READ_INSTR);
+  shiftData(READ_BUSY_FLAG, READ_INSTR);
   do{
     togglePin(EN);
   } 
@@ -214,7 +213,7 @@ const char* ShiftLcd::intToString(int n){
 
 // Update the time variable used by timed function
 void ShiftLcd::updateTime(){
-    prevTime = millis();
+  prevTime = millis();
 }
 
 // Returns if the delay time has passed

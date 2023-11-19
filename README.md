@@ -29,7 +29,8 @@ This Arduino library provides an easy-to-use interface for controlling an LCD di
 1. Include the `ShiftLcd` library in your Arduino sketch and create an instance of it:
 
 ```cpp
-  #include "ShiftLcd.h"
+  #include <ShiftLcd.h>
+
   int LCD_EN = 2;
   int LCD_D7 = 3; 
   int SHIFT_SER = 4; 

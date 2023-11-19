@@ -1,4 +1,4 @@
-#include "ShiftLcd.h"
+#include <ShiftLcd.h>
 
 // Pin configuration for LCD and photoresistor
 const int LCD_EN = 2;
