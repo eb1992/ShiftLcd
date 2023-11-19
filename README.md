@@ -1,6 +1,6 @@
 # ShiftLcd Library for Arduino
 
-This Arduino library provides an easy-to-use interface for controlling an LCD display with a shift register. It can control the display with only four pins from the Arduino. 
+This Arduino library provides an easy-to-use interface for controlling an HD44780U (or similar) LCD display with a SN74HC595 (or similar) shift register. It can control the display with only four pins from the Arduino. 
 
 ## Table of Contents
 
@@ -17,6 +17,8 @@ This Arduino library provides an easy-to-use interface for controlling an LCD di
 
 ## Installation
 1. Connect everything according to the picture:
+  * The pull down resistor connected to the LCDs D7-pin should be ca 10 kOhms.
+  * The 10 kOhms potentiometer connected to the LCDs V0-pin can be replaced by a ca 5 kOhms resistor.
 
 ![Connections](extras/Connections.png)
 
