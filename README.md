@@ -29,20 +29,20 @@ This Arduino library provides an easy-to-use interface for controlling an HD4478
 
 Installation can be done either from the Arduino IDE or from the source code.
 
-1. Arduino IDE:
-  1. Go to: Sketch > Include Library > Manage Libraries.
-  2. Search after "ShiftLcd".
-  3. Click install.
+#### Arduino IDE:
+1. Go to: Sketch > Include Library > Manage Libraries.
+2. Search after "ShiftLcd".
+3. Click install.
 
 
-2. From source:
-  1. Clone the repository to your projects directory.
+#### From source:
+1. Clone the repository to your projects directory.
 ```bash
   cd <directoryOfProject>
   git clone https://github.com/eb1992/ShiftLcd
 ```   
 
-  2. Import the library via relative path instead:
+2. Import the library via relative path instead:
 ```cpp
 #include "ShiftLcd/src/ShiftLcd.h"
 
